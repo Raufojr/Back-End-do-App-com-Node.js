@@ -35,11 +35,14 @@ export default class CreateUsers1615832431266 implements MigrationInterface {
                               default: 'now()',
 
                          }, {
-                              name: 'updated-at',
+                              name: 'updated_at',
                               type: 'timestamp',
                               default: 'now()',
 
                          },
+
+
+
                          //yarn typeorm migration:run
                          //yarn typeorm migrations:create -n CreateUsers  = cria uma table na pasta migration em database
                          //sudo docker start 1de05c5f2592  -> inicia o docker

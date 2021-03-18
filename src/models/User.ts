@@ -15,16 +15,17 @@ class User {
      @Column()
      password: string;
 
+     //@Column('timestamp with time zone')
+     //date: Date;
+
      @CreateDateColumn()
      created_at: Date;
-
 
      @UpdateDateColumn()
      updated_at: Date;
 
-     @Column('timestamp with time zone')
-     date: Date;
 
-}     //ctrl +d     para selcionar o mesmo nome em varias linhas
+
+}
 
 export default User;

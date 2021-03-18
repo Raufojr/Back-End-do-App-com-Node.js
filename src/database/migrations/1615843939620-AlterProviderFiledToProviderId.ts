@@ -3,37 +3,40 @@ import { MigrationInterface, QueryRunner, TableColumn, TableForeignKey } from "t
 export default class AlterProviderFiledToProviderId1615843939620 implements MigrationInterface {
 
      public async up(queryRunner: QueryRunner): Promise<void> {
-          await queryRunner.dropColumn('appointments', 'provider');
+          await queryRunner.dropColumn('users', 'updated-at');
 
           await queryRunner.addColumn(
-               'appointments',
+               'users',
                new TableColumn({
-                    name: 'provider_id',
-                    type: 'uuid',
-                    isNullable: true,
+                    name: 'updated_at',
+                    type: 'timestamp',
+                    default: 'now()',
+
                }),
           );
-          await queryRunner.createForeignKey('appointments', new TableForeignKey({
+          /*await queryRunner.createForeignKey('users', new TableForeignKey({
                name: 'AppointmentsProvider',
-               columnNames: ['provider_id'],
+               columnNames: [''],
                referencedColumnNames: ['id'],
                referencedTableName: 'users',
                onDelete: 'SET NULL',
                onUpdate: 'CASCADE',
           }),
-          );
+          );*/
      }
 
      public async down(queryRunner: QueryRunner): Promise<void> {
-          await queryRunner.dropForeignKey('appointments', 'AppointmentProvider');
+          //await queryRunner.dropForeignKey('appointments', 'AppointmentProvider');
 
-          await queryRunner.dropColumn('appointments', 'provider_id');
+          await queryRunner.dropColumn('users', 'updated_at');
 
           await queryRunner.addColumn(
-               'appointments',
+               'users',
                new TableColumn({
-                    name: 'provider',
-                    type: 'varchar',
+
+                    name: 'updated_at',
+                    type: 'timestamp',
+                    default: 'now()',
 
                }),
           );

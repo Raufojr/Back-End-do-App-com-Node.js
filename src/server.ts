@@ -39,17 +39,14 @@ yarn add ts-node-dev -D
 yarn dev:server  -> faz o papel so comando //yarn tsc e /node dist/server.js
 */
 import 'reflect-metadata'; //yarn add reflect-metadata
+
 import express from 'express';
-
-import './database';
-
 import routes from './routes';
 
+import './database';
 const app = express();
-
 app.use(express.json());
 app.use(routes);
-
 app.listen(3333, () => {
-     console.log('🚀 Server started on port 3333');
+     console.log(' Server started on port 3333');
 });
